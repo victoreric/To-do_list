@@ -32,11 +32,21 @@
         </thead>
         <tbody>
           {% for things in all_items %}
-          <tr>
-            <th scope="row">{{forloop.counter}}</th>
-            <td> {{things.item}} </td>
-            <td>{{things.completed}}</td>
-          </tr>
+
+            {% if things.completed %}
+                <tr class="table-success">
+                  <th scope="row">{{forloop.counter}}</th>
+                  <td><s>{{things.item}} </s> </td>
+                  <td><a href="{% url 'list:uncross' things.id  %}">сделано</a></td>
+                </tr>
+              {% else %}
+                <tr>
+                  <th scope="row">{{forloop.counter}}</th>
+                  <td> {{things.item}} </td>
+                  <td><a href="{% url 'list:cross_off' things.id  %}">не сделано</a></td>
+                </tr>
+              {% endif %}
+
           {% endfor %}
         </tbody>
        

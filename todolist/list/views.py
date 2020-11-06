@@ -4,6 +4,18 @@ from .forms import ListForm
 from django.db.models import Q
 from django.contrib import messages
 
+def cross_off (request,list_id):
+    item= List.objects.get(pk=list_id)
+    item.completed = True
+    item.save()
+    return redirect('list:index')
+
+def uncross(request, list_id):
+    item= List.objects.get(pk=list_id)
+    item.completed = False
+    item.save()
+    return redirect('list:index')
+
 def search(request):
     queryList = List.objects.all()
     queryCari = request.GET.get('kolomCari')
