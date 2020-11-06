@@ -9,6 +9,52 @@
 
 
 {% block content %}
-    create
+<div class="container mt-5 pt-4">
+    <div>
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {{item_form}}
+        </table>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <hr>
+    </div>
+
+    <div class="container pt-5">
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">items</th>
+              <th scope="col">completed</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for things in all_items %}
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td> {{things.item}} </td>
+              <td>{{things.completed}}</td>
+              <td>
+                <a href="{% url 'list:update' things.id %}"><button type="button" class="btn btn-outline-info">Edit</button></a>
+
+                <a href="{% url 'list:delete' things.id %}"><button type="button" class="btn btn-outline-danger">Del</button></a>
+
+
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+         
+        </table>
+        
+      </div>
+
+    
+    
+</div>       
+        
+        
 {% endblock content %}
     
