@@ -19,6 +19,7 @@ def search(request):
 
 def delete(request, delete_id):
     List.objects.filter(id=delete_id).delete()
+    messages.success(request,('Item has been Deleted..!'))
     return redirect('list:create')
 
 def update(request, update_id):
@@ -33,6 +34,7 @@ def update(request, update_id):
     if request.method == 'POST' :
         if item_form.is_valid():
             item_form.save()
+            messages.success(request,('Item has been edited..!'))
         return redirect ('list:create')
 
     context = {
@@ -48,6 +50,7 @@ def create(request):
     if request.method == 'POST' :
         if item_form.is_valid():
             item_form.save()
+            messages.success(request,('Item has been added to list!'))
             return redirect ('list/create.html')
 
     context = {
