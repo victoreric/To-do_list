@@ -4,5 +4,6 @@ from  .import views
 app_name='mysite'
 
 urlpatterns=[
-    url('',views.index, name='home'),
+    url('create/', views.create, name='create'),
+    url('/',views.list, name='index'),
 ]
