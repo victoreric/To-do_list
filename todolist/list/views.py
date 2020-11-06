@@ -1,8 +1,21 @@
 from django.shortcuts import render, redirect
 from .models import List
 from .forms import ListForm
+from django.db.models import Q
 from django.contrib import messages
 
+def search(request):
+    queryList = List.objects.all()
+    queryCari = request.GET.get('kolomCari')
+
+    if queryCari !='' and queryCari is not None :
+        queryList = queryList.filter(Q(item__icontains = queryCari))
+
+    context = {
+        'Title' : 'Search',
+        'queryset' : queryList,
+        }
+    return render(request, 'list/search.html', context)
 
 def delete(request, delete_id):
     List.objects.filter(id=delete_id).delete()
