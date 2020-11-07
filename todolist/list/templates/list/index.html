@@ -7,20 +7,19 @@
 
 {% block content %}
 
-
-  <!-- list do -->
-  <!-- 
-{% if messages  %}
-{% for message in messages %}
-<div class="pt-4 alert-warning alert-dismissable" role="alert">
-  <button class="close" data-dismiss="alert">
-    <small><sup>x</sup></small>
-  </button>
-  {{message}}
-
-{% endfor %}
+<!-- alert mesaage -->
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-warning alert-dismissable" role="alert">
+    <button class="close" data-dismiss='alert'>
+        <small><sup>x</sup></small>
+        </button>
+        {{message}}
+    </div>
+  {% endfor %}
 {% endif %}
--->
+<!-- end alert mesaage -->
+
 <div class="container pt-5">
       <table class="table table-striped table-hover">
         <thead class="thead-dark">
@@ -36,13 +35,13 @@
             {% if things.completed %}
                 <tr class="table-success">
                   <th scope="row">{{forloop.counter}}</th>
-                  <td><s>{{things.item}} </s> </td>
+                  <td><a href="{% url 'list:detail' things.id  %}"><s>{{things.item}}</s></a></td>
                   <td><a href="{% url 'list:uncross' things.id  %}">сделано</a></td>
                 </tr>
               {% else %}
                 <tr>
                   <th scope="row">{{forloop.counter}}</th>
-                  <td> {{things.item}} </td>
+                  <td> <a href="{% url 'list:detail' things.id  %}">{{things.item}}</a> </td>
                   <td><a href="{% url 'list:cross_off' things.id  %}">не сделано</a></td>
                 </tr>
               {% endif %}

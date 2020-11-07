@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{Title}}
+{% endblock title %}
+    
+
+{% block content %}
+<div class=" container mt-5 pt-4">
+
+    {% if detail_item.completed %}
+        <div class="card text-center ">
+            <div class="text-white card-header bg-primary">
+            Priority :  {{detail_item.priority}}
+            </div>
+            <div class="card-body">
+            <h5 class="card-title">{{detail_item.item}}</h5>
+            <p class="card-text">{{detail_item.subitem}}</p>
+            <a href="{% url 'list:uncross' detail_item.id  %}" class="btn btn-primary">Сделано</a>
+            </div>
+            <div class="card-footer text-muted-white bg-primary text-white">
+            category :  {{detail_item.category}}
+            </div>
+        </div>
+    {% else %}
+        <div class="card text-center ">
+            <div class=" card-header">
+            Priority :  {{detail_item.priority}}
+            </div>
+            <div class="card-body">
+            <h5 class="card-title">{{detail_item.item}}</h5>
+            <p class="card-text">{{detail_item.subitem}}</p>
+            <a href="{% url 'list:cross_off' detail_item.id  %}" class="btn btn-secondary">Не Сделано</a>
+            </div>
+            <div class="card-footer text-muted">
+            category :  {{detail_item.category}}
+            </div>
+        </div>
+    {% endif %}
+    <div class= 'pt-4'>
+     <a href="{% url 'list:index' %} " class="btn btn-info">Back</a>
+    </div>
+</div>
+{% endblock content %}
+    

@@ -6,12 +6,10 @@
 {% endblock title %}
     {{Title}}
 
-
-
 {% block content %}
 <div class="container mt-5 pt-4">
     <div>
-       
+       <!-- alert message -->
        {% if messages %}
            {% for message in messages %}
            <div class="alert alert-warning alert-dismissable" role="alert">
@@ -22,8 +20,9 @@
            </div>
            {% endfor %}
        {% endif %}
+       <!--  end alert message -->
            
-
+    <h4>   Добавить новую деятельность : </h4>
     <form method="POST">
         {% csrf_token %}
         <table>
@@ -52,7 +51,7 @@
               <td>
                 <a href="{% url 'list:update' things.id %}"><button type="button" class="btn btn-outline-info">Edit</button></a>
 
-                <a href="{% url 'list:delete' things.id %}"><button type="button" class="btn btn-outline-danger">Del</button></a>
+                <a href="{% url 'list:delete' things.id %}" onclick="return confirm('вы уверены в удалении??')"><button type="button" class="btn btn-outline-danger">Del</button></a>
 
 
               </td>
