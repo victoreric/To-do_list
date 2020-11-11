@@ -9,6 +9,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
+     <!-- CSS datatables -->
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
+
     <title>{{Title}}</title>
   </head>
   <body>
@@ -44,10 +47,11 @@
 </nav>
 <!-- end navbar -->
 
+<!-- containts -->
     <div class="container mt-5">
-    
-      <div class="card text-center">
-        <div class="card-header">
+    <!-- cov19 russia -->
+      <div class="card text-center pt-3">
+        <div class="card-header bg-info">
           {% for rusCov19 in case2 %}
           <h3>Coronavirus Cases in {{rusCov19.Country}}</h3> <h5>({{rusCov19.CountryCode}}) <img width ="40px"src="{% static 'russia-flag.png' %}"></h5> 
         </div>
@@ -64,22 +68,82 @@
 
           <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
         </div>
-        <div class="card-footer text-muted">
+        <div class="card-footer text-muted-white bg-info text-white">
           source : https://documenter.getpostman.com/  | Last update {{update}}
         </div>
         {% endfor %}
       </div>
-    
+      <!-- end cov19 russia -->
+
+      <!-- cov19 tomsk -->
+      {% for Cov19Tomsk in case3 %}
+      <div class="card text-center mt-4">
+        <div class="card-header  bg-primary text-white">
+          <h3>Coronavirus Cases in {{Cov19Tomsk.region}}</h3> 
+          <h6>({{Cov19Tomsk.isoCode}})<img width ="40px"src="{% static 'tomsk-flag.png' %}"></h6>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Total Confirmed: {{Cov19Tomsk.infected}} </h5>
+          <h5 class="card-title">Total Recovered : {{Cov19Tomsk.recovered}}</h5>
+          <h5 class="card-title">Total Deaths : {{Cov19Tomsk.deceased}}</h5>
+          <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+          <a href="#region" class="btn btn-secondary">see all regions in Russia</a>
+        </div>
+        <div class="card-footer text-muted-white text-white  bg-primary">
+          source : https://api.quarantine.country/api/v1/regions  | Last update {{update}}
+        </div>
+      </div>
+      {% endfor %}
+      <!-- end cov19 tomsk -->
 
 
+      <!-- cov19 allregions -->
+      <div id ="region" class="card text-center mt-4">
+        <div class="card-header">
+         <h3> CoronaVirus Cases stats in Russian Regions </h3>
+        </div>
+        
+        <table id ="example"  class="table table-hover table-bordered table-sm">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Region</th>
+              <th scope="col">Total Confirmed</th>
+              <th scope="col">Total Recovered</th>
+              <th scope="col">Total Deaths</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for allRegion in case4 %}
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td class="text-left">{{allRegion.region}}</td>
+              <td>{{allRegion.infected}}</td>
+              <td>{{allRegion.recovered}}</td>
+              <td>{{allRegion.deceased}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
 
+        <div class="card-footer text-muted">
+          source : https://api.quarantine.country/api/v1/regions  | Last update {{update}}
+        </div>
+      </div>
+      <!-- end cov19 allregions -->
 </div>
-  
-
-
+<!-- end containts -->  
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
+    <!-- javascript datatables -->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+          $('#example').DataTable();
+      });
+  </script>
     
   </body>
 </html>
