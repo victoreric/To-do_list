@@ -15,11 +15,8 @@ def detail(request, detail_id):
 
 def priority(request, priorityInput):
     all_items = List.objects.filter(priority=priorityInput)
-
     priority_menu = List.objects.values('priority').distinct().exclude(priority=priorityInput)
-
     priority_judul=priorityInput
-
     category_menu = List.objects.values('category').distinct()
 
     context = {
@@ -34,11 +31,9 @@ def priority(request, priorityInput):
 
 def category(request, categoryInput):
     all_items = List.objects.filter(category=categoryInput)
-
     category_menu = List.objects.values('category').distinct().exclude(category=categoryInput);
     # print(category_list)
     category_judul = categoryInput
-
     priority_menu = List.objects.values('priority').distinct()
 
     context = {
@@ -71,7 +66,7 @@ def search(request):
     queryCari = request.GET.get('kolomCari')
 
     if queryCari !='' and queryCari is not None :
-        queryList = queryList.filter(Q(item__icontains = queryCari))
+        queryList = queryList.filter(Q(item__icontains = queryCari)| Q(category__icontains=queryCari)|Q(priority__icontains=queryCari)|Q(completed__icontains=queryCari))
 
     context = {
         'Title' : 'Search',
