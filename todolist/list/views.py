@@ -13,6 +13,45 @@ def detail(request, detail_id):
     }
     return render (request, 'list/detail.html', context)
 
+def priority(request, priorityInput):
+    all_items = List.objects.filter(priority=priorityInput)
+
+    priority_menu = List.objects.values('priority').distinct().exclude(priority=priorityInput)
+
+    priority_judul=priorityInput
+
+    category_menu = List.objects.values('category').distinct()
+
+    context = {
+        'Title' : 'Priority',
+        'all_items' : all_items,
+        'priority_menu' : priority_menu,
+        'priority_judul' :priority_judul,
+        'category_menu' : category_menu,
+    }
+    return render (request, 'list/priority.html',context)
+
+
+def category(request, categoryInput):
+    all_items = List.objects.filter(category=categoryInput)
+
+    category_menu = List.objects.values('category').distinct().exclude(category=categoryInput);
+    # print(category_list)
+    category_judul = categoryInput
+
+    priority_menu = List.objects.values('priority').distinct()
+
+    context = {
+        'Title' : 'Category',
+        'all_items' : all_items,
+        'category_menu': category_menu,
+        'category_judul': category_judul,
+        'priority_menu': priority_menu,
+        
+
+    }
+    return render (request, 'list/category.html',context)
+
 def cross_off (request,list_id):
     item= List.objects.get(pk=list_id)
     item.completed = True
@@ -86,8 +125,17 @@ def create(request):
 def list(request):
     all_items = List.objects.all() 
 
+    category_menu=List.objects.values('category').distinct()
+    # print(category_menu)
+
+    priority_menu = List.objects.values('priority').distinct()
+    # print(priority_menu_list)
+
     context = {
         'Title' : 'List',
         'all_items' : all_items,
+        'category_menu' : category_menu,
+        'priority_menu' : priority_menu,
+
     }
     return render (request, 'list/index.html', context)
