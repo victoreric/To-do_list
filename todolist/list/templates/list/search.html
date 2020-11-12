@@ -8,12 +8,15 @@
 {% block content %}
 
 <div class="container pt-4">
-      <table class="table table-striped table-hover">
+      <table class="table table-striped table-hover table-bordered">
         <thead class="thead-dark">
           <tr>
             <th scope="col">No</th>
             <th scope="col">items</th>
+            <th scope="col">category</th>
+            <th scope="col">priority</th>
             <th scope="col">completed</th>
+            
           </tr>
         </thead>
         <tbody>
@@ -22,12 +25,16 @@
               <tr class=table-success>
                 <th scope="row">{{forloop.counter}}</th>
                 <td><a href="{% url 'list:detail' search.id  %}"><s>{{search.item}}</s></a></td>
+                <td>{{search.category}}</td>
+                <td>{{search.priority}}</td>
                 <td><a href="{% url 'list:uncross' search.id  %}">сделано</a></td>
               </tr>
             {% else %}
             <tr>
               <th scope="row">{{forloop.counter}}</th>
               <td><a href="{% url 'list:detail' search.id  %}">{{search.item}}</a></td>
+              <td>{{search.category}}</td>
+              <td>{{search.priority}}</td>
               <td><a href="{% url 'list:cross_off' search.id  %}">не сделано</a></td>
             </tr>
               

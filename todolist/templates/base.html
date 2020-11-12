@@ -8,6 +8,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
+    <!-- CSS datatables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
+
     <title>
         {% block title %}
             
@@ -31,17 +34,14 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'list:create' %}">Настройки</a>
         </li>
-       
       </ul>
 
     <!-- search -->
     <form action="{% url 'list:search' %}" method="GET" class="form-inline my-1 my-sm-0">
         <input class="form-control mr-sm-1" type="text" name='kolomCari' id="kolomcari" placeholder="Search" aria-label="Search">
-
         <button class="btn btn-outline-warning my-1 my-sm-0" type="submit">Search</button>
     </form>
     <!-- end search -->
-
     </div>
   </nav>
   <!-- end navbar -->
@@ -58,10 +58,17 @@
 </div> <!-- end wrap content-->
  <!--end content  -->
 
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
- 
+     <!-- javascript datatables -->
+     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+          $('#example').DataTable();
+      });
+  </script>
+
   </body>
 </html>
