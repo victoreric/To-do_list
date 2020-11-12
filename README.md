@@ -14,7 +14,15 @@ https://docs.google.com/spreadsheets/d/1Cof_pRN8SGEWxJN5L_8kMfJ2nXBybRP2rep92lwe
 7) Переход в детальное отображение записи
 8) Возможность добавлять в задачу ПОДЗАДАЧИ
 
-
-
 "Добавить на главную страницу приложения TODO-List (или экран, если это мобильное приложение) отображение числа зараженных COVID-19 в России и в Томске.
 API откуда брать данные: https://documenter.getpostman.com/view/10808728/SzS8rjbc?version=latest"
+
+
+Работа с Git
+1) Зарегистрироваться на gitlab.com
+2) Создать новый проект с public доступом
+3) ветка master должна остаться пустой
+4) Создать новую ветку с именем develop и работать там
+5) Создать Merge Request на ветку master после завершения проекта
+6) Добавить Калюжного Евгений и Черных Данила (kalyuzhnyer@gmail.com,danilachernyh@gmail.com) с ролью maintainer
+7) Написать в телеграм группу с отсылкой на проверяющих (@KalyuzhnyER, DTchernykh), чтобы они проверили у вас задание (Merge Request)
