@@ -1,0 +1,15 @@
+#warna {
+    background: linear-gradient(
+        53deg,
+        #ccfffc,
+        #ffcccf
+      );
+}
+
+#warna2 {
+    background: linear-gradient(
+        30deg,
+        #ffcccf,
+        #ccfffc
+      );
+}

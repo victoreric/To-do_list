@@ -10,26 +10,26 @@
 <!-- containts -->
     <div class="container mt-5">
     <!-- cov19 russia -->
-      <div class="card text-center pt-3">
-        <div class="card-header bg-info">
+      <div class="card text-center">
+        <div class="card-header"  id="warna">
           {% for rusCov19 in case2 %}
-          <h3>Coronavirus Cases in {{rusCov19.Country}}</h3> <h5>({{rusCov19.CountryCode}}) <img width ="40px"src="{% static 'russia-flag.png' %}"></h5> 
+          <h3>Случаи коронавируса в Российской Федерации</h3> <h5>({{rusCov19.CountryCode}}) <img width ="40px"src="{% static 'russia-flag.png' %}"></h5> 
         </div>
         <div class="card-body">
           
-          <h5 class="card-title"> New Confirmed :  {{rusCov19.NewConfirmed}} </h5> 
-          <h5 class="card-title"> Total Confirmed :  {{rusCov19.TotalConfirmed}} </h5> 
-          <h5 class="card-title"> New Deaths :  {{rusCov19.NewDeaths}}  </h5>
-          <h5 class="card-title"> Total Deaths :  {{rusCov19.TotalDeaths}} </h5> 
-          <h5 class="card-title"> New Recovered :  {{rusCov19.NewRecovered}} </h5> 
-          <h5 class="card-title"> New Total Recovered Confirmed :  {{rusCov19.NewTotalRecoveredConfirmed}}  </h5>
+          <h5 class="card-title"> Новое подтверждено :  {{rusCov19.NewConfirmed}} </h5> 
+          <h5 class="card-title"> Всего подтверждено :  {{rusCov19.TotalConfirmed}} </h5> 
+          <h5 class="card-title"> Новых смертей :  {{rusCov19.NewDeaths}}  </h5>
+          <h5 class="card-title"> Всего смертей :  {{rusCov19.TotalDeaths}} </h5> 
+          <h5 class="card-title"> Новое Восстановленное :  {{rusCov19.NewRecovered}} </h5> 
+          <h5 class="card-title"> Подтверждено новое общее восстановленных :  {{rusCov19.NewTotalRecoveredConfirmed}}  </h5>
           <!-- <h5 class="card-title"> Date :  {{rusCov19.Date}} </h5>  -->
           <p class="card-text"> </p>
 
           <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
         </div>
-        <div class="card-footer text-muted-white bg-info text-white">
-          source : https://documenter.getpostman.com/  | Last update {{update}}
+        <div class="card-footer text-muted" id="warna">
+          источник : https://documenter.getpostman.com/  | Последнее обновление {{update}}
         </div>
         {% endfor %}
       </div>
@@ -38,19 +38,19 @@
       <!-- cov19 tomsk -->
       {% for Cov19Tomsk in case3 %}
       <div class="card text-center mt-4">
-        <div class="card-header  bg-primary text-white">
-          <h3>Coronavirus Cases in {{Cov19Tomsk.region}}</h3> 
+        <div class="card-header" id="warna2">
+          <h3>Случаи коронавируса в Томской области</h3> 
           <h6>({{Cov19Tomsk.isoCode}})<img width ="40px"src="{% static 'tomsk-flag.png' %}"></h6>
         </div>
         <div class="card-body">
-          <h5 class="card-title">Total Confirmed: {{Cov19Tomsk.infected}} </h5>
-          <h5 class="card-title">Total Recovered : {{Cov19Tomsk.recovered}}</h5>
-          <h5 class="card-title">Total Deaths : {{Cov19Tomsk.deceased}}</h5>
+          <h5 class="card-title">Зараженный: {{Cov19Tomsk.infected}} </h5>
+          <h5 class="card-title">Восстановлен: {{Cov19Tomsk.recovered}}</h5>
+          <h5 class="card-title">Умерший : {{Cov19Tomsk.deceased}}</h5>
           <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-          <a href="#region" class="btn btn-secondary">see all regions in Russia</a>
+          <a href="#region" class="btn btn-outline-primary">see all regions in Russia</a>
         </div>
-        <div class="card-footer text-muted-white text-white  bg-primary">
-          source : https://api.quarantine.country/api/v1/regions  | Last update {{update}}
+        <div class="card-footer text-muted" id="warna2">
+          источник : https://api.quarantine.country/api/v1/regions  | Последнее обновление {{update}}
         </div>
       </div>
       {% endfor %}
